@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart Royal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<h1>Products For Sale</h1>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.productid}"></td>
+        <td th:text="${product.name}"></td><br>
+        <td th:text="'$' + ${product.price}"></td>
+        <td><img style="width:500px;height:500px;" th:src="@{${product.image}}"/></td>
+        <td ><a th:href="@{'/mycart/addproduct/{productid}' (productid=${product.productid})}"><button type="button" class="btn btn-primary">Add to Cart</button></a></td><br>
+    </tr>
+
+<a href="/mycart">View Cart</a>
+</body>
+</html>
